@@ -16,6 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Visitor counter
+
+The flagship card reads and increments its visitor total through Upstash Redis.
+Create a Redis database, copy `.env.example` to `.env.local`, and provide:
+
+```bash
+UPSTASH_REDIS_REST_URL=your_rest_url
+UPSTASH_REDIS_REST_TOKEN=your_rest_token
+```
+
+Add the same variables to the hosting project before the first deployment. The
+counter is stored outside the application, so future visits update it without a
+new build or deployment.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

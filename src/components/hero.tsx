@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useMemo, useRef } from "react";
 import { Reveal, Stagger } from "@/components/reveal";
+import { SiteStats } from "@/components/site-stats";
 
 function MaskReveal({
   children,
@@ -119,13 +120,42 @@ export function Hero() {
               <div className="mt-6 text-lg font-medium tracking-tight text-white/85 sm:text-2xl">
                 Student portfolio crafted with engineering precision
               </div>
-              <div className="mt-2 text-sm tracking-tight text-white/55">
-                Next.js · Tailwind CSS · Framer Motion
+              <div className="mt-2 text-sm leading-6 tracking-tight text-white/55">
+                The portfolio you are viewing, built as a fast and responsive
+                showcase for my work.
               </div>
-              <div className="group mt-8 relative overflow-hidden rounded-2xl border border-white/10 h-[220px]">
-                <Image src="/images/portfolio.png" alt="Portfolio Engine" fill className="object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent mix-blend-overlay" />
+              <div className="group relative mt-8 h-[220px] overflow-hidden rounded-2xl border border-white/10">
+                <Image
+                  src="/images/portfolio-site.png"
+                  alt="Preview of Anubhav Pandey's portfolio website"
+                  fill
+                  className="object-cover object-top opacity-90 transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                  <div className="mb-3 text-[10px] uppercase tracking-[0.16em] text-white/50">
+                    Built with
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {[
+                      "Next.js",
+                      "React",
+                      "TypeScript",
+                      "Tailwind CSS",
+                      "Framer Motion",
+                      "Lenis",
+                    ].map((technology) => (
+                      <span
+                        key={technology}
+                        className="rounded-full border border-white/15 bg-black/60 px-2.5 py-1 text-[10px] tracking-tight text-white/75 backdrop-blur-md"
+                      >
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
+              <SiteStats />
             </div>
 
             <div className="col-span-12 grid gap-4 sm:col-span-5">
