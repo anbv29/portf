@@ -1,38 +1,71 @@
 "use client";
 
-import Image from "next/image";
 import { ExternalLink, GitFork } from "lucide-react";
 import { Reveal, Stagger } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
 
 const projects = [
   {
+    number: "01",
     title: "Throttle",
-    blurb: "a multi-tenant, event-driven document intelligence platform with asynchronous PDF ingestion, OCR, document classification, and schema-driven structured data extraction using React, Node.js/Fastify, Python/FastAPI, PostgreSQL, Redis, and BullMQ.",
-    tags: ["Next.js", "TypeScript", "MongoDB"],
-    span: "md:col-span-7",
-    image: "/images/campus.png",
+    type: "Rate-limiting infrastructure",
+    blurb:
+      "A standalone, concurrency-safe rate-limiting service that gives teams configurable, per-client control over API traffic using Token Bucket and Sliding Window algorithms.",
+    highlights: [
+      "Designed RESTful APIs with persistent rate-limit state, PostgreSQL ACID transactions, row-level locking (SELECT ... FOR UPDATE), and atomic updates to prevent race conditions during concurrent requests.",
+      "Built an interactive real-time monitoring and load-testing dashboard for request analytics, ALLOW/DENY decisions, client configuration, and high-concurrency traffic simulation.",
+      "Developed a reusable API integration and middleware pattern that lets applications and microservices enforce centralized limits and return HTTP 429 Too Many Requests responses.",
+    ],
+    stack: [
+      "PERN Stack",
+      "PostgreSQL",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "REST APIs",
+      "Token Bucket",
+      "Sliding Window",
+      "ACID Transactions",
+      "Row-level Locking",
+      "Atomic Operations",
+      "Load Testing",
+      "Microservices",
+      "Middleware",
+      "HTTP 429",
+      "Real-time Monitoring",
+    ],
   },
   {
-    title: "SkillForge LMS",
-    blurb: "A learning platform with authentication, progress analytics, and structured course modules.",
-    tags: ["React", "Node.js", "JWT"],
-    span: "md:col-span-5",
-    image: "/images/skillforge.png",
-  },
-  {
-    title: "Algo Visualizer",
-    blurb: "Interactive visualizations for sorting and graph algorithms with real-time state transitions.",
-    tags: ["JavaScript", "Data Structures", "UI"],
-    span: "md:col-span-5",
-    image: "/images/algo.png",
-  },
-  {
-    title: "Portfolio Engine",
-    blurb: "A performance-focused personal site with premium motion and reusable section architecture.",
-    tags: ["Framer Motion", "Tailwind", "App Router"],
-    span: "md:col-span-7",
-    image: "/images/portfolio.png",
+    number: "02",
+    title: "Finora",
+    type: "Document intelligence platform",
+    blurb:
+      "A multi-tenant, event-driven platform that turns unstructured PDFs into searchable, structured intelligence through asynchronous ingestion, OCR, classification, extraction, and grounded AI responses.",
+    highlights: [
+      "Engineered an asynchronous processing pipeline with React, Node.js/Fastify, Python/FastAPI, PostgreSQL, Redis, and BullMQ for PDF ingestion, OCR, document classification, and schema-driven data extraction.",
+      "Implemented a Retrieval-Augmented Generation (RAG) pipeline using document chunking, vector embeddings, pgvector, semantic search, and LLM-based grounded responses with source citations.",
+      "Designed secure REST APIs with JWT authentication, refresh-token rotation, RBAC, tenant isolation, idempotent background jobs, retries, WebSocket updates, and Dockerized multi-service deployment.",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Fastify",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "pgvector",
+      "Redis",
+      "BullMQ",
+      "Docker",
+      "REST APIs",
+      "WebSockets",
+      "OCR",
+      "RAG",
+      "LLMs",
+      "JWT",
+      "RBAC",
+    ],
   },
 ] as const;
 
@@ -48,11 +81,12 @@ export function Projects() {
                   Selected work
                 </div>
                 <h2 className="mt-3 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
-                  Selected student projects
+                  Systems built beyond the interface
                 </h2>
-                <p className="mt-3 max-w-xl text-sm leading-6 tracking-tight text-white/55">
-                  Projects focused on product utility, clean architecture, and
-                  production-style UI implementation.
+                <p className="mt-3 max-w-2xl text-sm leading-6 tracking-tight text-white/55">
+                  Production-minded projects spanning distributed backend
+                  systems, concurrency control, asynchronous processing, and
+                  AI-powered user experiences.
                 </p>
               </div>
 
@@ -75,38 +109,63 @@ export function Projects() {
             </div>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-12">
-            {projects.map((p) => (
-              <Reveal key={p.title} className={p.span}>
-                <TiltCard className="glass-card h-full rounded-3xl p-5 sm:p-6">
-                  <div className="flex items-start justify-between gap-4 sm:gap-6">
-                    <div className="min-w-0">
-                      <div className="text-[12px] tracking-tight text-white/55">
-                        Case study
+          <div className="mt-10 grid grid-cols-1 gap-5">
+            {projects.map((project) => (
+              <Reveal key={project.title}>
+                <TiltCard
+                  className="glass-card h-full rounded-3xl p-5 sm:p-7 lg:p-8"
+                  maxTilt={3}
+                >
+                  <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] lg:gap-12">
+                    <div className="flex min-w-0 flex-col">
+                      <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.16em] text-white/45">
+                        <span>{project.number}</span>
+                        <span className="h-px w-7 bg-white/15" />
+                        <span>{project.type}</span>
                       </div>
-                      <div className="mt-3 text-lg font-medium tracking-tight text-white/85 sm:text-xl">
-                        {p.title}
-                      </div>
-                      <div className="mt-2 text-sm leading-6 tracking-tight text-white/55">
-                        {p.blurb}
+
+                      <h3 className="mt-5 text-2xl font-semibold tracking-[-0.04em] text-white sm:text-3xl">
+                        {project.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-7 tracking-tight text-white/60">
+                        {project.blurb}
+                      </p>
+
+                      <div className="mt-7 border-t border-white/10 pt-5">
+                        <div className="text-[11px] uppercase tracking-[0.16em] text-white/40">
+                          Technology stack
+                        </div>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {project.stack.map((technology) => (
+                            <span
+                              key={technology}
+                              className="rounded-full border border-white/10 bg-white/[0.035] px-2.5 py-1 text-[11px] tracking-tight text-white/65"
+                            >
+                              {technology}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {p.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[12px] tracking-tight text-white/60"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="group mt-8 relative overflow-hidden rounded-2xl border border-white/10 h-[120px] sm:h-[160px]">
-                    <Image src={p.image} alt={p.title} fill className="object-cover opacity-70 transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent mix-blend-overlay" />
+                    <div className="border-t border-white/10 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                      <div className="text-[11px] uppercase tracking-[0.16em] text-white/40">
+                        Engineering highlights
+                      </div>
+                      <ul className="mt-1 divide-y divide-white/10">
+                        {project.highlights.map((highlight, index) => (
+                          <li
+                            key={highlight}
+                            className="grid grid-cols-[2rem_1fr] gap-2 py-5 text-sm leading-7 tracking-tight text-white/60 first:pt-4 last:pb-0"
+                          >
+                            <span className="font-mono text-[11px] text-white/35">
+                              {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </TiltCard>
               </Reveal>
@@ -117,4 +176,3 @@ export function Projects() {
     </section>
   );
 }
-

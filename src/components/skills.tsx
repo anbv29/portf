@@ -15,7 +15,7 @@ const skillGroups = [
     icon: Database,
     items: [
       "Node.js", "Express.js", "REST APIs", "GraphQL", "JWT Auth",
-      "Prisma", "WebSockets", "tRPC", "Hono",
+      "Prisma", "WebSockets", "BullMQ", "RAG", "LLMs", "tRPC", "Hono",
     ],
   },
   {
@@ -30,7 +30,8 @@ const skillGroups = [
     title: "Databases & Infra",
     icon: Cloud,
     items: [
-      "MongoDB", "PostgreSQL", "Redis", "Firebase", "Supabase", "MySQL",
+      "MongoDB", "PostgreSQL", "Redis", "Vector Databases (pgvector)",
+      "Firebase", "Supabase", "MySQL",
     ],
   },
   {
