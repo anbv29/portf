@@ -183,7 +183,7 @@ export function Hero() {
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   <div>
                     <div className="text-xl font-semibold tracking-tight text-white/85">
-                      75+
+                      15+
                     </div>
                     <div className="mt-1 text-[11px] tracking-tight text-white/50">
                       Projects built
@@ -191,7 +191,7 @@ export function Hero() {
                   </div>
                   <div>
                     <div className="text-xl font-semibold tracking-tight text-white/85">
-                      5+
+                      3+
                     </div>
                     <div className="mt-1 text-[11px] tracking-tight text-white/50">
                       Years coding
