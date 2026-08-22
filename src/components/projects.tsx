@@ -8,6 +8,7 @@ const projects = [
   {
     number: "01",
     title: "Throttle",
+    github: "https://github.com/anbv29/Throttle",
     type: "Rate-limiting infrastructure",
     blurb:
       "A standalone, concurrency-safe rate-limiting service that gives teams configurable, per-client control over API traffic using Token Bucket and Sliding Window algorithms.",
@@ -38,6 +39,7 @@ const projects = [
   {
     number: "02",
     title: "Finora",
+    github: "https://github.com/anbv29/Finora",
     type: "Document intelligence platform",
     blurb:
       "A multi-tenant, event-driven platform that turns unstructured PDFs into searchable, structured intelligence through asynchronous ingestion, OCR, classification, extraction, and grounded AI responses.",
@@ -93,14 +95,18 @@ export function Projects() {
               <div className="flex items-center gap-3">
                 <a
                   className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-2 text-[12px] tracking-tight text-white/70 transition-colors hover:text-white"
-                  href="#"
+                  href="https://github.com/anbv29"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <GitFork size={16} strokeWidth={1.5} />
                   GitHub
                 </a>
                 <a
                   className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-2 text-[12px] tracking-tight text-white/70 transition-colors hover:text-white"
-                  href="#"
+                  href="/anubhav-resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <ExternalLink size={16} strokeWidth={1.5} />
                   Resume
@@ -130,6 +136,17 @@ export function Projects() {
                       <p className="mt-4 text-sm leading-7 tracking-tight text-white/60">
                         {project.blurb}
                       </p>
+
+                      <a
+                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-[12px] tracking-tight text-white/70 transition-colors hover:border-white/20 hover:text-white"
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`View ${project.title} on GitHub`}
+                      >
+                        <GitFork size={15} strokeWidth={1.5} />
+                        View on GitHub
+                      </a>
 
                       <div className="mt-7 border-t border-white/10 pt-5">
                         <div className="text-[11px] uppercase tracking-[0.16em] text-white/40">
