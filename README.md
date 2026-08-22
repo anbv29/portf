@@ -18,17 +18,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Visitor counter
 
-The flagship card reads and increments its visitor total through Upstash Redis.
-Create a Redis database, copy `.env.example` to `.env.local`, and provide:
-
-```bash
-UPSTASH_REDIS_REST_URL=your_rest_url
-UPSTASH_REDIS_REST_TOKEN=your_rest_token
-```
-
-Add the same variables to the hosting project before the first deployment. The
-counter is stored outside the application, so future visits update it without a
-new build or deployment.
+The flagship card registers each fresh page load through a hosted persistent
+counter. No database credentials or environment variables are required. Open
+pages read the latest total every 15 seconds, and new visits update without a
+new build or deployment. The counter is requested directly from the visitor's
+browser so genuine page views are not collapsed into the hosting server's IP.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
