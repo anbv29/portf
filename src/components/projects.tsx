@@ -7,8 +7,8 @@ import { TiltCard } from "@/components/tilt-card";
 
 const projects = [
   {
-    title: "Campus Placement Tracker",
-    blurb: "A placement workflow dashboard for students to monitor drives, deadlines, and status.",
+    title: "Throttle",
+    blurb: "a multi-tenant, event-driven document intelligence platform with asynchronous PDF ingestion, OCR, document classification, and schema-driven structured data extraction using React, Node.js/Fastify, Python/FastAPI, PostgreSQL, Redis, and BullMQ.",
     tags: ["Next.js", "TypeScript", "MongoDB"],
     span: "md:col-span-7",
     image: "/images/campus.png",

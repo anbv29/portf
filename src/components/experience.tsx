@@ -7,53 +7,13 @@ import { cn } from "@/lib/cn";
 
 const roles = [
   {
-    title: "Google Summer of Code 2025 Contributor",
-    org: "GSoC · Open Source",
-    time: "May 2025 — Aug 2025",
-    points: [
-      "Selected as a GSoC 2025 contributor for an open-source organization.",
-      "Contributing upstream patches, feature modules, and documentation improvements.",
-      "Collaborating with global maintainers through code reviews and RFC discussions.",
-    ],
-  },
-  {
-    title: "Software Engineering Intern",
-    org: "Atlassian",
-    time: "Jan 2025 — Mar 2025",
-    points: [
-      "Worked on internal tooling and developer productivity platforms.",
-      "Built scalable microservices and contributed to CI/CD pipeline enhancements.",
-      "Collaborated with cross-functional teams in an agile environment.",
-    ],
-  },
-  {
-    title: "Full-Stack Developer",
-    org: "Cluely",
-    time: "Jun 2025 — Oct 2025",
-    points: [
-      "Developed AI-powered product features with React and Node.js.",
-      "Shipped production-grade components with clean architecture and automated testing.",
-      "Integrated third-party APIs and optimised end-to-end user flows.",
-    ],
-  },
-  {
     title: "Software Developer",
-    org: "Galvantrix",
-    time: "Sep 2024 — Nov 2024",
+    org: "Reach",
+    time: "June 2025 — July 2025",
     points: [
       "Built and maintained full-stack web applications for enterprise clients.",
       "Implemented Docker-based deployment workflows and automated staging environments.",
       "Contributed to internal design systems and reusable component libraries.",
-    ],
-  },
-  {
-    title: "Open-Source Contributor",
-    org: "Cloud Native Computing Foundation (CNCF)",
-    time: "Jun 2024 — Aug 2024",
-    points: [
-      "Contributing to CNCF ecosystem projects focused on cloud-native tooling.",
-      "Participated in community discussions, issue triage, and documentation sprints.",
-      "Building expertise in Kubernetes, Helm, and container orchestration.",
     ],
   },
   {
