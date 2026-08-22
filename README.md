@@ -19,10 +19,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Visitor counter
 
 The flagship card registers each fresh page load through a hosted persistent
-counter. No database credentials or environment variables are required. Open
-pages read the latest total every 15 seconds, and new visits update without a
-new build or deployment. The counter is requested directly from the visitor's
-browser so genuine page views are not collapsed into the hosting server's IP.
+visitor-badge counter. No database credentials or environment variables are
+required. Each page load is recorded once, and new visits update without a new
+build or deployment.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

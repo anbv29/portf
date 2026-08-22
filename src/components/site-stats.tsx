@@ -4,8 +4,6 @@ import { Clock3, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 
 let visitRegistered = false;
-const COUNTER_ENDPOINT =
-  "https://counterapi.com/api/anubhav-pandey-portfolio/view/homepage";
 
 function formatDuration(totalSeconds: number) {
   const hours = Math.floor(totalSeconds / 3600);
@@ -30,43 +28,32 @@ export function SiteStats() {
   useEffect(() => {
     let isMounted = true;
 
-    const readVisitorCount = async (registerVisit = false) => {
+    const registerVisit = async () => {
       try {
-        const url = new URL(COUNTER_ENDPOINT);
-        url.searchParams.set("request", Date.now().toString());
-        if (!registerVisit) url.searchParams.set("readOnly", "true");
-
-        const response = await fetch(url, {
+        const response = await fetch("/api/visitors", {
+          method: "POST",
           cache: "no-store",
-          credentials: "omit",
           headers: { Accept: "application/json" },
         });
 
         if (!response.ok) throw new Error("Visitor counter unavailable");
 
-        const data = (await response.json()) as { value: number };
+        const data = (await response.json()) as { count: number };
         if (isMounted) {
-          setVisitorCount((current) =>
-            current === null ? data.value : Math.max(current, data.value)
-          );
+          setVisitorCount(data.count);
         }
       } catch {
-        if (registerVisit) visitRegistered = false;
+        visitRegistered = false;
       }
     };
 
     const shouldRegisterVisit = !visitRegistered;
     visitRegistered = true;
 
-    void readVisitorCount(shouldRegisterVisit);
-    const refreshInterval = window.setInterval(
-      () => void readVisitorCount(),
-      15_000
-    );
+    if (shouldRegisterVisit) void registerVisit();
 
     return () => {
       isMounted = false;
-      window.clearInterval(refreshInterval);
     };
   }, []);
 
