@@ -7,7 +7,7 @@ import { TiltCard } from "@/components/tilt-card";
 const projects = [
   {
     number: "01",
-    title: "Throttle",
+    title: "THROTTLE",
     github: "https://github.com/anbv29/Throttle",
     type: "Rate-limiting infrastructure",
     blurb:
@@ -38,7 +38,7 @@ const projects = [
   },
   {
     number: "02",
-    title: "Finora",
+    title: "FINORA",
     github: "https://github.com/anbv29/Finora",
     type: "Document intelligence platform",
     blurb:
