@@ -69,6 +69,64 @@ const projects = [
       "RBAC",
     ],
   },
+  {
+    number: "03",
+    title: "NION",
+    github: "https://github.com/anbv29/Nion",
+    type: "Developer analytics platform",
+    blurb:
+      "A GitHub analytics platform that turns a developer's yearly activity into meaningful insights and a premium, customizable card built to download and share.",
+    highlights: [
+      "Built a dedicated analytics layer over GitHub's GraphQL API to evaluate commits, pull requests, issues, repositories, languages, contribution streaks, and productivity patterns across a developer's year.",
+      "Derived project-level insights including Most Worked On, Longest-Running Build, Hidden Gem, Lost Momentum, and Comeback Project by analyzing contribution history, consistency, stars, and engagement.",
+      "Designed a cache-first architecture with Upstash Redis to reduce API calls and handle GitHub rate limits, with server-side image generation using @vercel/og and Satori for downloadable social cards without a headless browser.",
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "GitHub GraphQL API",
+      "GitHub OAuth",
+      "Auth.js",
+      "Upstash Redis",
+      "PostgreSQL",
+      "Prisma / Drizzle",
+      "@vercel/og",
+      "Satori",
+      "Vercel",
+      "Server-side Rendering",
+      "Data Analytics",
+    ],
+  },
+  {
+    number: "04",
+    title: "MYDAY",
+    github: "https://github.com/anbv29/Myday",
+    type: "Public date marketplace",
+    blurb:
+      "A public date-claiming platform where people turn meaningful dates into shareable digital landmarks through competitive outbidding, public profiles, and a global leaderboard.",
+    highlights: [
+      "Engineered a race-condition-safe claim and outbid system with transaction-protected ownership updates, real-time public activity, claim history, unique profiles, and leaderboard rankings.",
+      "Integrated Razorpay and Stripe for regional and international payments with server-verified webhooks, idempotency protection, strict authorization, row-level security, and abuse prevention.",
+      "Designed a Cloudflare-ready architecture with Pinecone-powered semantic discovery, Redis caching and distributed rate limiting, plus product analytics and production monitoring through PostHog and Sentry.",
+    ],
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Clerk",
+      "Upstash Redis",
+      "Cloudflare",
+      "Razorpay",
+      "Stripe",
+      "Pinecone",
+      "PostHog",
+      "Sentry",
+      "Row-level Security",
+      "Distributed Rate Limiting",
+    ],
+  },
 ] as const;
 
 export function Projects() {
@@ -87,8 +145,8 @@ export function Projects() {
                 </h2>
                 <p className="mt-3 max-w-2xl text-sm leading-6 tracking-tight text-white/55">
                   Production-minded projects spanning distributed backend
-                  systems, concurrency control, asynchronous processing, and
-                  AI-powered user experiences.
+                  systems, concurrency control, asynchronous processing,
+                  developer analytics, and AI-powered user experiences.
                 </p>
               </div>
 
