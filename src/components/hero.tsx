@@ -64,7 +64,7 @@ export function Hero() {
           <Reveal>
             <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[12px] tracking-tight text-white/70 backdrop-blur-xl">
               <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
-              Final Year Student · NIT Jalandhar
+              Your Friendly Neighborhood Developer
             </div>
           </Reveal>
 
