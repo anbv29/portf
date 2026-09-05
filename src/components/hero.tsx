@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useMemo, useRef } from "react";
 import { Reveal, Stagger } from "@/components/reveal";
 import { SiteStats } from "@/components/site-stats";
+import { GithubActivity } from "@/components/github-activity";
 
 function MaskReveal({
   children,
@@ -103,11 +104,15 @@ export function Hero() {
               ))}
             </div>
           </Reveal>
+
+          <Reveal className="mx-auto mt-8 w-full max-w-5xl">
+            <GithubActivity />
+          </Reveal>
         </Stagger>
 
         <motion.div
           style={{ scale, y }}
-          className="mt-12 w-full"
+          className="mt-5 w-full"
           aria-hidden="true"
         >
           <div className="glass-card mx-auto grid w-full max-w-5xl grid-cols-12 gap-4 rounded-3xl p-4 sm:p-6">
