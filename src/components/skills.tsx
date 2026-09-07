@@ -75,9 +75,9 @@ export function Skills() {
               const Icon = group.icon;
               return (
                 <Reveal key={group.title}>
-                  <div className="glass-card h-full rounded-3xl p-5 sm:p-6">
+                  <div className="glass-card surface-interactive group h-full rounded-3xl p-5 sm:p-6">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/75">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/75 transition-[transform,border-color,color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:rotate-3 group-hover:border-emerald-300/25 group-hover:text-emerald-200/90">
                         <Icon size={17} strokeWidth={1.5} />
                       </span>
                       <h3 className="text-base font-medium tracking-tight text-white/85">
@@ -89,7 +89,7 @@ export function Skills() {
                       {group.items.map((item) => (
                         <span
                           key={item}
-                          className="rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[12px] tracking-tight text-white/65"
+                          className="pill-interactive rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[12px] tracking-tight text-white/65"
                         >
                           {item}
                         </span>

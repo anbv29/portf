@@ -69,7 +69,7 @@ export function SiteStats() {
 
   return (
     <div className="mt-4 grid grid-cols-2 gap-3">
-      <div className="rounded-2xl border border-white/10 bg-black/35 p-4 backdrop-blur-md">
+      <div className="surface-interactive rounded-2xl border border-white/10 bg-black/35 p-4 backdrop-blur-md">
         <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-white/45">
           <Users size={13} strokeWidth={1.5} />
           Visitors
@@ -82,7 +82,7 @@ export function SiteStats() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-black/35 p-4 backdrop-blur-md">
+      <div className="surface-interactive rounded-2xl border border-white/10 bg-black/35 p-4 backdrop-blur-md">
         <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.14em] text-white/45">
           <Clock3 size={13} strokeWidth={1.5} />
           Time here

@@ -152,7 +152,7 @@ export function Projects() {
 
               <div className="flex items-center gap-3">
                 <a
-                  className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-2 text-[12px] tracking-tight text-white/70 transition-colors hover:text-white"
+                  className="glass-card pill-interactive inline-flex items-center gap-2 rounded-full px-3 py-2 text-[12px] tracking-tight text-white/70"
                   href="https://github.com/anbv29"
                   target="_blank"
                   rel="noreferrer"
@@ -161,7 +161,7 @@ export function Projects() {
                   GitHub
                 </a>
                 <a
-                  className="glass-card inline-flex items-center gap-2 rounded-full px-3 py-2 text-[12px] tracking-tight text-white/70 transition-colors hover:text-white"
+                  className="glass-card pill-interactive inline-flex items-center gap-2 rounded-full px-3 py-2 text-[12px] tracking-tight text-white/70"
                   href="/anubhav-resume.pdf"
                   target="_blank"
                   rel="noreferrer"
@@ -196,13 +196,17 @@ export function Projects() {
                       </p>
 
                       <a
-                        className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-[12px] tracking-tight text-white/70 transition-colors hover:border-white/20 hover:text-white"
+                        className="pill-interactive group/link mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-3 py-2 text-[12px] tracking-tight text-white/70"
                         href={project.github}
                         target="_blank"
                         rel="noreferrer"
                         aria-label={`View ${project.title} on GitHub`}
                       >
-                        <GitFork size={15} strokeWidth={1.5} />
+                        <GitFork
+                          size={15}
+                          strokeWidth={1.5}
+                          className="transition-transform duration-300 group-hover/link:rotate-6"
+                        />
                         View on GitHub
                       </a>
 
@@ -214,7 +218,7 @@ export function Projects() {
                           {project.stack.map((technology) => (
                             <span
                               key={technology}
-                              className="rounded-full border border-white/10 bg-white/[0.035] px-2.5 py-1 text-[11px] tracking-tight text-white/65"
+                              className="pill-interactive rounded-full border border-white/10 bg-white/[0.035] px-2.5 py-1 text-[11px] tracking-tight text-white/65"
                             >
                               {technology}
                             </span>
@@ -231,9 +235,9 @@ export function Projects() {
                         {project.highlights.map((highlight, index) => (
                           <li
                             key={highlight}
-                            className="grid grid-cols-[2rem_1fr] gap-2 py-5 text-sm leading-7 tracking-tight text-white/60 first:pt-4 last:pb-0"
+                            className="group/highlight grid grid-cols-[2rem_1fr] gap-2 py-5 text-sm leading-7 tracking-tight text-white/60 transition-colors duration-300 hover:text-white/80 first:pt-4 last:pb-0"
                           >
-                            <span className="font-mono text-[11px] text-white/35">
+                            <span className="font-mono text-[11px] text-white/35 transition-colors duration-300 group-hover/highlight:text-emerald-300/70">
                               {String(index + 1).padStart(2, "0")}
                             </span>
                             <span>{highlight}</span>

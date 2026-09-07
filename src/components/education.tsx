@@ -63,14 +63,18 @@ export function Education() {
                   {educationItems.map((item) => (
                     <div
                       key={item.degree}
-                      className="rounded-2xl border border-white/10 bg-black/25 p-4"
+                      className="surface-interactive group rounded-2xl border border-white/10 bg-black/25 p-4"
                     >
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="text-base font-medium tracking-tight text-white/85">
                           {item.degree}
                         </div>
                         <div className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2 py-1 text-[11px] tracking-tight text-white/60">
-                          <CalendarClock size={13} strokeWidth={1.5} />
+                          <CalendarClock
+                            size={13}
+                            strokeWidth={1.5}
+                            className="transition-transform duration-300 group-hover:rotate-6"
+                          />
                           {item.meta}
                         </div>
                       </div>
@@ -94,10 +98,13 @@ export function Education() {
                 </div>
                 <ul className="space-y-3 text-sm leading-6 tracking-tight text-white/60">
                   {highlights.map((point) => (
-                    <li key={point} className="flex gap-3">
+                    <li
+                      key={point}
+                      className="group flex gap-3 rounded-xl px-2 py-1 transition-colors duration-300 hover:bg-white/[0.035] hover:text-white/80"
+                    >
                       <span
                         aria-hidden="true"
-                        className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-white/50"
+                        className="mt-[0.55rem] h-1 w-1 shrink-0 rounded-full bg-white/50 transition-[transform,background-color] duration-300 group-hover:scale-150 group-hover:bg-emerald-300/80"
                       />
                       <span>{point}</span>
                     </li>

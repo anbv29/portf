@@ -1,16 +1,17 @@
 "use client";
 
 import { cn } from "@/lib/cn";
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import React from "react";
 
 export const springy: Variants = {
-  hidden: { y: 20, opacity: 0, filter: "blur(10px)" },
+  hidden: { y: 26, opacity: 0, scale: 0.992, filter: "blur(12px)" },
   show: {
     y: 0,
     opacity: 1,
+    scale: 1,
     filter: "blur(0px)",
-    transition: { type: "spring", stiffness: 100, damping: 20 },
+    transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -25,14 +26,20 @@ export function Stagger({
   delayChildren?: number;
   staggerChildren?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial="hidden"
+      initial={reduceMotion ? "show" : "hidden"}
       whileInView="show"
-      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+      viewport={{ once: true, amount: 0.14 }}
       variants={{
         hidden: {},
-        show: { transition: { delayChildren, staggerChildren } },
+        show: {
+          transition: reduceMotion
+            ? { delayChildren: 0, staggerChildren: 0 }
+            : { delayChildren, staggerChildren },
+        },
       }}
       className={className}
     >
@@ -49,7 +56,10 @@ export function Reveal({
   className?: string;
 }) {
   return (
-    <motion.div variants={springy} className={cn(className)}>
+    <motion.div
+      variants={springy}
+      className={cn("will-change-[transform,opacity,filter]", className)}
+    >
       {children}
     </motion.div>
   );

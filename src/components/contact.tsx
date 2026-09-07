@@ -27,11 +27,15 @@ export function Contact() {
 
                 <a
                   href="mailto:anubhavp950@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm tracking-tight text-white/80 transition-colors hover:bg-white/8 hover:text-white"
+                  className="pill-interactive group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm tracking-tight text-white/80"
                 >
                   <Mail size={16} strokeWidth={1.5} />
                   anubhavp950@gmail.com
-                  <ArrowUpRight size={16} strokeWidth={1.5} />
+                  <ArrowUpRight
+                    size={16}
+                    strokeWidth={1.5}
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
                 </a>
               </div>
 
@@ -40,7 +44,7 @@ export function Contact() {
                   href="https://x.com/anewbhev"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs tracking-tight text-white/75 transition-colors hover:bg-white/8 hover:text-white"
+                  className="pill-interactive inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs tracking-tight text-white/75"
                 >
                   <FaXTwitter className="h-[15px] w-[15px]" />
                   @anewbhev
@@ -49,7 +53,7 @@ export function Contact() {
                   href="https://instagram.com/anbvsig"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs tracking-tight text-white/75 transition-colors hover:bg-white/8 hover:text-white"
+                  className="pill-interactive inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs tracking-tight text-white/75"
                 >
                   <FaInstagram className="h-[15px] w-[15px]" />
                   @anbvsig

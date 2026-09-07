@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import React, { useRef } from "react";
 import { Reveal, Stagger, springy } from "@/components/reveal";
 import { cn } from "@/lib/cn";
@@ -44,12 +44,13 @@ function TimelineItem({
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { margin: "-30% 0px -55% 0px" });
+  const reduceMotion = useReducedMotion();
 
   return (
     <div ref={ref} className="relative grid grid-cols-12 gap-4 py-10">
       <div className="col-span-12 sm:col-span-4">
         <motion.div
-          initial="hidden"
+          initial={reduceMotion ? "show" : "hidden"}
           animate={inView ? "show" : "hidden"}
           variants={springy}
         >
@@ -69,36 +70,38 @@ function TimelineItem({
         <div className="absolute left-0 top-0 hidden h-full w-px bg-white/10 sm:block" />
         <div
           className={cn(
-            "absolute left-0 top-10 hidden h-[calc(100%-2.5rem)] w-px sm:block",
+            "absolute left-0 top-10 hidden h-[calc(100%-2.5rem)] w-px origin-top transition-[background-color,transform] duration-700 sm:block",
+            inView ? "scale-y-100" : "scale-y-0",
             inView ? "bg-gradient-to-b from-white/40 via-white/20 to-white/5" : "bg-white/10"
           )}
         />
         <div
           className={cn(
-            "absolute left-[-6px] top-9 hidden h-3 w-3 rounded-full border sm:block",
+            "absolute left-[-6px] top-9 hidden h-3 w-3 rounded-full border transition-[background-color,border-color,box-shadow,transform] duration-500 sm:block",
             inView
-              ? "border-white/35 bg-white/20 shadow-[0_0_0_6px_rgba(255,255,255,0.06)]"
+              ? "scale-100 border-emerald-200/40 bg-emerald-300/30 shadow-[0_0_0_6px_rgba(52,211,153,0.07)]"
               : "border-white/15 bg-white/5"
           )}
         />
 
         <motion.div
-          initial="hidden"
+          initial={reduceMotion ? "show" : "hidden"}
           animate={inView ? "show" : "hidden"}
           variants={springy}
-          className="glass-card rounded-3xl p-5 sm:ml-6 sm:p-6"
+          className="glass-card surface-interactive rounded-3xl p-5 sm:ml-6 sm:p-6"
         >
           <div className="text-[12px] tracking-tight text-white/55">
             Impact
           </div>
           <ul className="mt-4 space-y-3 text-sm leading-6 tracking-tight text-white/60">
             {role.points.map((p) => (
-              <li key={p} className="flex gap-3">
+              <li key={p} className="group flex gap-3 transition-colors duration-300 hover:text-white/80">
                 <span
                   aria-hidden="true"
                   className={cn(
                     "mt-[0.6rem] h-1 w-1 shrink-0 rounded-full",
-                    inView ? "bg-white/60" : "bg-white/25"
+                    inView ? "bg-emerald-300/70" : "bg-white/25",
+                    "transition-[transform,background-color] duration-300 group-hover:scale-150"
                   )}
                 />
                 <span>{p}</span>

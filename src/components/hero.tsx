@@ -1,7 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import React, { useMemo, useRef } from "react";
 import { Reveal, Stagger } from "@/components/reveal";
 import { SiteStats } from "@/components/site-stats";
@@ -14,12 +19,18 @@ function MaskReveal({
   children: React.ReactNode;
   delay?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <span className="inline-block overflow-hidden align-top">
       <motion.span
-        initial={{ y: "110%", filter: "blur(10px)", opacity: 0 }}
+        initial={
+          reduceMotion
+            ? false
+            : { y: "110%", filter: "blur(10px)", opacity: 0 }
+        }
         animate={{ y: "0%", filter: "blur(0px)", opacity: 1 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20, delay }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
         className="inline-block"
       >
         {children}
@@ -30,13 +41,15 @@ function MaskReveal({
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.55], [0.8, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.6], [22, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.8], [1, 0.975]);
+  const y = useTransform(scrollYProgress, [0, 0.8], [0, 46]);
+  const opacity = useTransform(scrollYProgress, [0, 0.72, 1], [1, 0.9, 0.5]);
 
   const headline = useMemo(
     () => (
@@ -63,8 +76,11 @@ export function Hero() {
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center px-5 pt-28 sm:px-8">
         <Stagger className="text-center">
           <Reveal>
-            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[12px] tracking-tight text-white/70 backdrop-blur-xl">
-              <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+            <div className="pill-interactive mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[12px] tracking-tight text-white/70 backdrop-blur-xl">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300/50" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-300/80" />
+              </span>
               Your Friendly Neighborhood Developer
             </div>
           </Reveal>
@@ -97,7 +113,7 @@ export function Hero() {
               ].map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[12px] tracking-tight text-white/70"
+                  className="pill-interactive rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[12px] tracking-tight text-white/70"
                 >
                   {item}
                 </span>
@@ -111,12 +127,12 @@ export function Hero() {
         </Stagger>
 
         <motion.div
-          style={{ scale, y }}
+          style={reduceMotion ? undefined : { scale, y, opacity }}
           className="mt-5 w-full"
           aria-hidden="true"
         >
           <div className="glass-card mx-auto grid w-full max-w-5xl grid-cols-12 gap-4 rounded-3xl p-4 sm:p-6">
-            <div className="col-span-12 overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-5 sm:col-span-7 sm:p-6">
+            <div className="surface-interactive col-span-12 overflow-hidden rounded-2xl border border-white/10 bg-black/40 p-5 sm:col-span-7 sm:p-6">
               <div className="flex items-center justify-between">
                 <div className="text-[12px] tracking-tight text-white/60">
                   Flagship
@@ -134,7 +150,8 @@ export function Hero() {
                   src="/images/portfolio-site.png"
                   alt="Preview of Anubhav Pandey's portfolio website"
                   fill
-                  className="object-cover object-top opacity-90 transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(min-width: 640px) 560px, calc(100vw - 72px)"
+                  className="object-cover object-top opacity-90 transition-[transform,filter] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045] group-hover:saturate-125"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
@@ -164,7 +181,7 @@ export function Hero() {
             </div>
 
             <div className="col-span-12 grid gap-4 sm:col-span-5">
-              <div className="glass-card rounded-2xl p-5">
+              <div className="glass-card surface-interactive rounded-2xl p-5">
                 <div className="text-[12px] tracking-tight text-white/60">
                   About
                 </div>
@@ -173,7 +190,7 @@ export function Hero() {
                   real user problems.
                 </div>
               </div>
-              <div className="glass-card rounded-2xl p-5">
+              <div className="glass-card surface-interactive rounded-2xl p-5">
                 <div className="text-[12px] tracking-tight text-white/60">
                   Focus
                 </div>
@@ -181,7 +198,7 @@ export function Hero() {
                   Full-stack engineering, cloud infrastructure, container orchestration, and open-source collaboration.
                 </div>
               </div>
-              <div className="glass-card rounded-2xl p-5">
+              <div className="glass-card surface-interactive rounded-2xl p-5">
                 <div className="text-[12px] tracking-tight text-white/60">
                   Snapshot
                 </div>

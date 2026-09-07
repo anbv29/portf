@@ -2,6 +2,7 @@
 
 import { GitCommitHorizontal, GitFork } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 type ActivityDay = {
   date: string;
@@ -57,6 +58,7 @@ function tooltipPosition(index: number) {
 }
 
 export function GithubActivity() {
+  const reduceMotion = useReducedMotion();
   const [activity, setActivity] = useState<ActivityResponse | null>(null);
   const [hasError, setHasError] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -202,8 +204,15 @@ export function GithubActivity() {
             {activity
               ? activity.days.map((day, index) => (
                   <li key={day.date} className="group relative min-w-0">
-                    <button
+                    <motion.button
                       type="button"
+                      initial={reduceMotion ? false : { scale: 0.65, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{
+                        duration: 0.45,
+                        delay: reduceMotion ? 0 : index * 0.018,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                       className={`block aspect-square w-full rounded-[0.34rem] border transition duration-200 hover:-translate-y-0.5 focus-visible:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black ${activityClass(
                         day.count
                       )}`}

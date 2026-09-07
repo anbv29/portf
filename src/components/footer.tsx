@@ -5,10 +5,16 @@ export function Footer() {
         <div className="flex flex-col justify-between gap-4 border-t border-white/10 pt-8 text-[12px] tracking-tight text-white/45 sm:flex-row">
           <div>© {new Date().getFullYear()} Anubhav Pandey</div>
           <div className="flex items-center gap-4">
-            <a className="hover:text-white/70" href="#top">
+            <a
+              className="transition-colors duration-300 hover:text-white/80"
+              href="#top"
+            >
               Back to top
             </a>
-            <a className="hover:text-white/70" href="#">
+            <a
+              className="transition-colors duration-300 hover:text-white/80"
+              href="#"
+            >
               NIT Jalandhar
             </a>
           </div>
