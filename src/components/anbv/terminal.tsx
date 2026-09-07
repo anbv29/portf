@@ -6,13 +6,50 @@ import { links, profile, projects, skillGroups } from "@/data/portfolio";
 
 type Entry = { command: string; output: string[] };
 
-const navigationCommands: Partial<Record<string, ModuleId>> = {
-  projects: "projects",
-  experience: "experience",
-  stack: "stack",
-  about: "about",
-  contact: "contact",
-};
+const navigationCommands: Array<{ module: ModuleId; commands: string[] }> = [
+  {
+    module: "core",
+    commands: ["core", "open core", "open identity", "open identity module"],
+  },
+  {
+    module: "projects",
+    commands: ["projects", "open projects", "project services", "open project services"],
+  },
+  {
+    module: "experience",
+    commands: [
+      "experience",
+      "open experience",
+      "experience timeline",
+      "open experience timeline",
+      "open system timeline",
+    ],
+  },
+  {
+    module: "stack",
+    commands: ["stack", "open stack", "engineering stack", "open engineering stack"],
+  },
+  {
+    module: "terminal",
+    commands: ["terminal", "open terminal", "open command interface"],
+  },
+  {
+    module: "about",
+    commands: ["about", "open about", "system profile", "open system profile"],
+  },
+  {
+    module: "contact",
+    commands: ["contact", "open contact", "communications", "open communications"],
+  },
+];
+
+function normalizeCommand(command: string) {
+  return command
+    .trim()
+    .toLowerCase()
+    .replace(/^\$\s*/, "")
+    .replace(/\s+/g, " ");
+}
 
 export function Terminal({
   onNavigate,
@@ -32,7 +69,7 @@ export function Terminal({
   const inputRef = useRef<HTMLInputElement>(null);
 
   function execute(rawCommand: string) {
-    const command = rawCommand.trim().toLowerCase();
+    const command = normalizeCommand(rawCommand);
     if (!command) return;
 
     if (command === "clear") {
@@ -40,7 +77,9 @@ export function Terminal({
       return;
     }
 
-    const destination = navigationCommands[command];
+    const destination = navigationCommands.find(({ commands }) =>
+      commands.includes(command)
+    )?.module;
     if (destination) {
       setHistory((current) => [
         ...current,
@@ -61,6 +100,7 @@ export function Terminal({
           "stack       open engineering stack",
           "about       open system profile",
           "contact     open communications",
+          "resume      open résumé document",
           "clear       clear terminal output",
         ];
         break;
@@ -80,6 +120,14 @@ export function Terminal({
         output = skillGroups.map(
           (group) => `${group.title}: ${group.items.join(", ")}`
         );
+        break;
+      case "resume":
+      case "open resume":
+      case "view resume":
+      case "open résumé":
+      case "view résumé":
+        window.open(links.resume, "_blank", "noopener,noreferrer");
+        output = ["Opening résumé document..."];
         break;
       default:
         output = [`Command not found: ${command}`, "Run 'help' for available commands."];
