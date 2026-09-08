@@ -115,7 +115,7 @@ export const projects = [
     number: "03",
     title: "NION",
     type: "Developer analytics platform",
-    github: "https://github.com/anbv29/Nion",
+    github: "https://github.com/anbv29/nion",
     overview:
       "A GitHub analytics platform that turns a developer's yearly activity into meaningful insights and a premium, customizable card built to download and share.",
     highlights: [
@@ -250,6 +250,40 @@ export const projects = [
       "Semantic planner",
       "Policy + approval gate",
       "Action + learning log",
+    ],
+  },
+  {
+    number: "07",
+    title: "INDIA: THE RECORD",
+    type: "Source-backed civic research platform",
+    github: "https://github.com/anbv29/indian-pol",
+    overview:
+      "An interactive public archive for exploring and comparing the documented records of Indian central governments across promises, policies, legislation, economic indicators, and foreign affairs.",
+    highlights: [
+      "Built a government-switching research experience with year-by-year timelines, manifesto tracking, legislation search, policy records, foreign-policy history, and deep dossiers linked to their underlying evidence.",
+      "Designed a transparent assessment model that separates facts, official objectives, documented changes, and conclusions while exposing evidence strength, source hierarchies, methodology, and research cutoffs.",
+      "Integrated lazily loaded World Bank economic data with interactive Recharts visualizations, official snapshot fallbacks, dynamic record routes, responsive navigation, and reduced-motion-aware transitions.",
+    ],
+    stack: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS 4",
+      "Framer Motion",
+      "Recharts",
+      "Lucide React",
+      "World Bank API",
+      "Next.js App Router",
+      "Static Research Data",
+      "Dynamic Routes",
+      "Vercel",
+    ],
+    architecture: [
+      "Research sources",
+      "Curated data layer",
+      "Next.js record explorer",
+      "World Bank live data",
+      "Evidence-linked dossiers",
     ],
   },
 ] as const;
