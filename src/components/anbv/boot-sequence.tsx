@@ -17,13 +17,24 @@ export function BootSequence({ onComplete }: { onComplete: () => void }) {
   const [ready, setReady] = useState(false);
 
   const finish = useCallback(() => {
-    window.sessionStorage.setItem("anbv-boot-seen", "1");
+    try {
+      window.sessionStorage.setItem("anbv-boot-seen", "1");
+    } catch {
+      // Storage can be unavailable in private or embedded mobile browsers.
+    }
     onComplete();
   }, [onComplete]);
 
   useEffect(() => {
-    const alreadySeen = window.sessionStorage.getItem("anbv-boot-seen") === "1";
-    if (alreadySeen || reduceMotion) {
+    let alreadySeen = false;
+    try {
+      alreadySeen = window.sessionStorage.getItem("anbv-boot-seen") === "1";
+    } catch {
+      // Continue without persistence when the browser blocks storage.
+    }
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (alreadySeen || reduceMotion || isMobile) {
       finish();
       return;
     }
