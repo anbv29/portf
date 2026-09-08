@@ -303,7 +303,7 @@ export const experience = [
     title: "Final Year B.Tech Student",
     organization:
       "Dr. B. R. Ambedkar National Institute of Technology, Jalandhar",
-    period: "2022 — Present",
+    period: "2022 — 2026",
     points: [
       "Specializing in software development, data structures, and system design fundamentals.",
       "Building full-stack projects with modern React and backend technologies.",

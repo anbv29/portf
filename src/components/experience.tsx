@@ -19,7 +19,7 @@ const roles = [
   {
     title: "Final Year B.Tech Student",
     org: "Dr. B. R. Ambedkar National Institute of Technology, Jalandhar",
-    time: "2022 — Present",
+    time: "2022 — 2026",
     points: [
       "Specializing in software development, data structures, and system design fundamentals.",
       "Building full-stack projects with modern React and backend technologies.",
